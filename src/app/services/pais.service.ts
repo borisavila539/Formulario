@@ -10,11 +10,10 @@ export class PaisService {
 
   getPaises(){
 
-    return this.http.get('https://restcountries.com/v2/lang/es')
+    return this.http.get<any[]>('https://restcountries.com/v2/lang/es')
     .pipe(
       map((resp:any[])=>{
-        return resp.map(pais => ({nombre: pais.name, codigo: pais.alpha3Code
-        })
+        return resp.map(pais => ({nombre: pais.name, codigo: pais.alpha3Code})
         ) 
       })
     );
